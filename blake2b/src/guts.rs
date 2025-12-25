@@ -28,18 +28,18 @@ impl Implementation {
     pub fn detect() -> Self {
         // Try the different implementations in order of how fast/modern they
         // are. Currently on non-x86, everything just uses portable.
-        #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-        {
-            if let Some(avx2_impl) = Self::avx2_if_supported() {
-                return avx2_impl;
-            }
-        }
-        #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-        {
-            if let Some(sse41_impl) = Self::sse41_if_supported() {
-                return sse41_impl;
-            }
-        }
+        // #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+        // {
+        //     if let Some(avx2_impl) = Self::avx2_if_supported() {
+        //         return avx2_impl;
+        //     }
+        // }
+        // #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+        // {
+        //     if let Some(sse41_impl) = Self::sse41_if_supported() {
+        //         return sse41_impl;
+        //     }
+        // }
         Self::portable()
     }
 
